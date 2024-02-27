@@ -1,0 +1,23 @@
+{% extends "portfolio/layout.html" %}
+{% load static %}
+{% block main %}
+            <section id="project" class="section">
+                <div id="projects-container">
+
+                    {% for filename in project.filenames %}
+                    <div class="projects-item">
+                        {% if ".png" in filename %}
+                        <img src="{% static project.filepath %}{{ filename }}"  style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0;" alt="{{ project.title }}">
+
+                        {% elif ".mp4" in filename %}
+                        <video width="100%" height="100%" style="object-fit: cover; position:absolute; top:0" autoplay loop muted>
+                            <source src="{% static project.filepath %}{{ filename }}" type="video/mp4">
+                        </video>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+
+                </div>
+                {{ content|safe }}
+            </section>
+{% endblock %}

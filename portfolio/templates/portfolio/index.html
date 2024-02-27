@@ -1,0 +1,27 @@
+{% extends "portfolio/layout.html" %}
+{% load static %}
+{% block main %}
+            <section id="landing-page" class="section">
+                <img src="{% static 'portfolio/images/landing-page.png' %}" alt="landing-page" style="max-width: 100%; max-height: 80%;">
+            </section>
+            <section id="projects" class="section">
+                <div id="projects-container">
+
+                    {% for project in projects %}
+                    <div class="projects-item" onclick="location.href = '{{ project.title }}'">
+                        
+                        {% if ".png" in project.filenames.0 %}
+                        <img src="{% static project.filepath %}{{ project.filenames.0}}"  style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0;" alt="{{ project.title }}">
+
+                        {% elif ".mp4" in project.filenames.0 %}
+                        <video width="100%" height="100%" style="object-fit: cover; position:absolute; top:0" autoplay loop muted>
+                            <source src="{% static project.filepath %}{{ project.filenames.0}}" type="video/mp4">
+                        </video>
+                        {% endif %}
+
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </section>
+{% endblock %}

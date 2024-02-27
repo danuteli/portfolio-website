@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en"> 
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>D L S | Portfolio</title>
+
+        <link rel="stylesheet" href="{% static 'portfolio/styles.css' %}">
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a href="{% url 'portfolio:index' %}">DLS</a></li>
+                <li><a href="{% url 'portfolio:index'%}#projects">Projects</a></li>
+            </ul>
+        </nav>
+        <main>
+            {% block main %}
+            {% endblock %}
+        </main>
+        <footer>
+            <h1>CONTACT</h1>
+            <p>email@gmail.com</p>
+            <p>&copy; </p>
+        </footer>
+    </body>
+</html>
